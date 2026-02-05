@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.E.L.E.C.T.O.R // SYSTEM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="scan-line"></div>
+    <div class="overlay-grid"></div>
+
+    <div class="hud-container">
+        <header class="hud-header">
+            <div class="header-decoration left"></div>
+            <h1><span class="glitch" data-text="R.A.N.D.O.M">R.A.N.D.O.M</span> <span class="accent">SELECTOR</span>
+            </h1>
+            <div class="header-decoration right"></div>
+            <div class="status-bar">SYSTEM: ONLINE // WAITING FOR INPUT</div>
+        </header>
+
+        <main class="main-interface">
+            <!-- Configuration Section -->
+            <div class="config-section" id="config-section">
+                <div class="section-title">SYSTEM INITIALIZATION</div>
+                <div class="config-controls">
+                    <div class="input-wrapper large">
+                        <label>SLOT COUNT</label>
+                        <input type="number" class="hud-input large-input" placeholder="5" min="2" max="100" value="5"
+                            id="slot-count">
+                    </div>
+                    <button id="init-system-btn" class="hud-btn primary">
+                        <span class="btn-text">INITIALIZE SYSTEM</span>
+                        <span class="btn-glitch"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Input Section (Hidden by default) -->
+            <div class="input-section hidden" id="input-section">
+                <div class="section-header">
+                    <div class="section-title">DATA ENTRY MODULE</div>
+                    <button id="reset-btn" class="hud-btn small">RESET</button>
+                </div>
+
+                <div class="input-grid" id="input-grid">
+                    <!-- Inputs injected here -->
+                </div>
+
+                <div class="action-area">
+                    <button id="initiate-btn" class="hud-btn">
+                        <span class="btn-text">INITIATE SEQUENCE</span>
+                        <span class="btn-glitch"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-section hidden" id="result-section-container">
+                <div class="section-title">OUTPUT STREAM</div>
+                <div class="result-display" id="result-display">
+                    <span class="placeholder">AWAITING DATA...</span>
+                </div>
+                <div class="decoding-text" id="decoding-text"></div>
+            </div>
+        </main>
+
+        <aside class="history-panel">
+            <div class="panel-header">
+                <h3>LOGS</h3>
+                <div class="timer" id="clock">00:00:00</div>
+            </div>
+            <div class="history-list" id="history-list">
+                <!-- History items will be injected here -->
+            </div>
+        </aside>
+
+        <footer class="hud-footer">
+            <div class="footer-line"></div>
+            <div class="footer-text">SECURE CONNECTION ESTABLISHED. V.1.0.4</div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
