@@ -2,6 +2,8 @@
 
 A futuristic HUD-style random selector with dynamic inputs, selection animation, and local history storage.
 
+![Preview](screenshot.png)
+
 ## Features
 
 - Custom slot count (2 to 100)
