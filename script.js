@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initiateBtn = document.getElementById('initiate-btn');
     const resultDisplay = document.getElementById('result-display');
     const historyList = document.getElementById('history-list');
+    const clearLogsBtn = document.getElementById('clear-logs-btn');
     const statusBar = document.querySelector('.status-bar');
 
     // State
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSystemBtn.addEventListener('click', initializeSystem);
     resetBtn.addEventListener('click', resetSystem);
     initiateBtn.addEventListener('click', startSelection);
+    clearLogsBtn.addEventListener('click', clearHistory);
 
     // --- Core Logic ---
 
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.className = 'input-wrapper';
             wrapper.innerHTML = `
                 <label>VAL ${i.toString().padStart(2, '0')}</label>
-                <input type="number" class="hud-input generated-input" placeholder="00" min="0" max="50">
+                <input type="number" class="hud-input generated-input" placeholder="00" min="0" max="100">
                 <div class="input-light"></div>
             `;
             inputGrid.appendChild(wrapper);
@@ -67,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resultSection.classList.add('hidden');
         configSection.classList.remove('hidden');
 
-        // Clear inputs logic if desired, or keep for next time
+        resultDisplay.innerHTML = '<span class="placeholder">AWAITING DATA...</span>';
+        resultDisplay.classList.remove('active');
         statusBar.innerText = 'SYSTEM: ONLINE // WAITING FOR INPUT';
     }
 
@@ -82,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (val === '') return; // Skip empty
 
             const num = parseInt(val, 10);
-            if (isNaN(num) || num < 0 || num > 50) {
+            if (isNaN(num) || num < 0 || num > 100) {
                 input.style.borderColor = 'var(--danger-color)';
                 hasError = true;
             } else {
@@ -92,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (hasError) {
-            alert('ERROR: VALUES MUST BE BETWEEN 0 AND 50.');
+            alert('ERROR: VALUES MUST BE BETWEEN 0 AND 100.');
             return;
         }
 
@@ -194,5 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             historyList.appendChild(el);
         });
+    }
+
+    function clearHistory() {
+        if (confirm('CONFIRM LOG PURGE? THIS ACTION IS IRREVERSIBLE.')) {
+            historyData = [];
+            saveHistory();
+            renderHistory();
+            statusBar.innerText = 'SYSTEM: LOGS PURGED';
+        }
     }
 });
