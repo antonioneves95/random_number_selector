@@ -44,7 +44,7 @@ The system attempts to avoid repeating the last 5 results if other options are a
 
 ### Change value limits
 In `script.js`, edit:
-- the validation range (0–50)
+- the validation range (0–100)
 - the `max` attribute in generated inputs
 
 ### Change colors and theme
